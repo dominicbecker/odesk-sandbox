@@ -1,0 +1,61 @@
+<%= form_tag do %>
+  <div class="field">
+    <%= label_tag(:title, "Title") %><br />
+    <%= text_field_tag(:title) %>
+  </div>
+  <div class="field">
+    dropdown
+    <%= label_tag(:job_type, "Job type") %><br />
+    <%= select_tag(:job_type, options_for_select(['fixed-price', 'hourly'])) %>
+  </div>
+  <div class="field">
+    <%= label_tag(:description, "Description") %><br />
+    <%= text_area_tag(:description) %>
+  </div>
+  <div class="field">
+    calendar
+    <%= label_tag(:start_date, "Start Date") %><br />
+    <%= date_select('post', :start_date) %>
+  </div>
+  <div class="field">
+    calendar
+    <%= label_tag(:end_date, "End Date") %><br />
+    <%= date_select('post', :end_date) %>
+  </div>
+  <div class="field">
+    <%= label_tag(:buyer_team__reference, "Buyer Team") %><br />
+    <%= select_tag(:buyer_team__reference, options_for_select(@team_options)) %>
+  </div>
+  <div class="field">
+    dropdown
+    <%= label_tag(:visibility, "Visibility") %><br />
+    <%= select_tag(:visibility, options_for_select(['public', 'odesk', 'invite-only'])) %>
+  </div>
+  <div class="field">
+    add js for if job_type... fixed-price: budget; hourly: duration
+    <%= label_tag(:budget, "Budget") %><br />
+    <%= text_field_tag(:budget) %>
+  </div>
+  <div class="field">
+    <%= label_tag(:duration, "Duration") %><br />
+    <%= text_field_tag(:duration) %>
+  </div>
+  <div class="field">
+    dropdown
+    <%= label_tag(:category, "Category") %><br />
+    <%= text_field_tag(:category) %>
+  </div>
+  <div class="field">
+    dropdown
+    <%= label_tag(:subcategory, "Subcategory") %><br />
+    <%= text_field_tag(:subcategory) %>
+  </div>
+  <div class="field">
+    if updating only
+    <%= label_tag(:status, "Status") %><br />
+    <%= select_tag(:status, options_for_select(['open', 'filled', 'cancelled'])) %>
+  </div>
+  <div class="actions">
+    <%= submit_tag("Create") %>
+  </div>
+<% end %>

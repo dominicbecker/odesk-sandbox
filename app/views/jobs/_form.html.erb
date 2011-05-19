@@ -1,0 +1,70 @@
+<%= form_for(@job) do |f| %>
+  <% if @job.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@job.errors.count, "error") %> prohibited this job from being saved:</h2>
+      <ul>
+      <% @job.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div class="field">
+    <%= f.label :title %><br />
+    <%= f.text_field :title %>
+  </div>
+  <div class="field">
+    <%= f.label :job_type %><br />
+    <%= f.select :job_type, options_for_select(['fixed-price', 'hourly']) %>
+  </div>
+  <div class="field">
+    <%= f.label :description %><br />
+    <%= f.text_area :description %>
+  </div>
+  <div class="field">
+    defaults to creation date
+    <%= f.label :start_date %> (currently <%= @job.start_date %>)<br />
+    <%= f.date_select :start_date, {:default => Date.today} %>
+  </div>
+  <div class="field">
+    only for fixed price
+    <%= f.label :end_date %>(currently <%= @job.end_date %>)<br />
+    <%= f.date_select :end_date, {:default => 1.days.from_now} %>
+  </div>
+  <div class="field">
+    <%= f.label :buyer_team__reference, "Buyer team" %><br />
+    <%= f.select :buyer_team__reference, options_for_select(@team_options) %>
+  </div>
+  <div class="field">
+    dropdown
+    <%= f.label :visibility %><br />
+    <%= f.select :visibility, options_for_select(['public', 'odesk', 'invite-only']) %>
+  </div>
+  <div class="field">
+    add js for if job_type... fixed-price: budget; hourly: duration
+    <%= f.label :budget %><br />
+    <%= f.text_field :budget %>
+  </div>
+  <div class="field">
+    <%= f.label :duration %><br />
+    <%= f.text_field :duration %>
+  </div>
+  <div class="field">
+    dropdown
+    <%= f.label :category %><br />
+    <%= f.text_field :category %>
+  </div>
+  <div class="field">
+    dropdown
+    <%= f.label :subcategory %><br />
+    <%= f.text_field :subcategory %>
+  </div>
+  <div class="field">
+    editing/updating only
+    <%= f.label :status %><br />
+    <%= f.select :status, options_for_select(['open', 'filled', 'cancelled']) %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

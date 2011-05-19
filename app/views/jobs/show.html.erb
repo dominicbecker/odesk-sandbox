@@ -1,0 +1,80 @@
+<h1>Job#show</h1>
+
+<p>
+<b>Reference</b>:
+<%= @job.reference %>
+</p>
+
+<p>
+<b>Title</b>:
+<%= link_to @job.title, @job.public_url %>
+</p>
+
+<p>
+<b>Job type</b>:
+<%= @job.job_type %>
+</p>
+
+<p>
+<b>Description</b>:
+<%= @job.description %>
+</p>
+
+<p>
+<b>Start date</b>:
+<%= @job.start_date %>
+</p>
+
+<p>
+<b>End date</b>:
+<%= @job.end_date %>
+</p>
+
+<p>
+<b>Buyer team reference</b>:
+<%= @job.buyer_team__reference %>
+</p>
+
+<p>
+<b>Visibility</b>:
+<%= @job.visibility %>
+</p>
+
+<p>
+<b>Budget</b>:
+<%= @job.budget %>
+</p>
+
+<p>
+<b>Duration</b>:
+<%= @job.duration %></td>
+</p>
+
+<p>
+<b>Category</b>:
+<%= @job.category %>
+</p>
+
+<p>
+<b>Subcategory</b>:
+<%= @job.subcategory %>
+</p>
+
+<p>
+<b>Status</b>:
+<%= @job.status %>
+</p>
+
+
+<%= (@job.status != 'cancelled') ? (link_to 'Edit', edit_job_path(@job.reference)) : '' %>
+<%= (@job.status != 'cancelled') ? (link_to 'Cancel', @job.reference, :confirm=>'Are you sure?', :method=>:delete) : '' %>
+
+<br />
+<br />
+
+<b>Offers</b>
+<% @offers.each do |offer| %>
+  hi
+<% end -%>
+
+<br />

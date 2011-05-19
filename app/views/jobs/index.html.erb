@@ -1,0 +1,47 @@
+<h1>Jobs</h1>
+
+<table>
+  <tr>
+    <th>Reference</th>
+    <th>Title</th>
+    <th>Job type</th>
+    <th>Description</th>
+    <th>Start date</th>
+    <th>End date</th>
+    <th>Buyer team reference</th>
+    <th>Visibility</th>
+    <th>Budget</th>
+    <th>Duration</th>
+    <th>Category</th>
+    <th>Subcategory</th>
+    <th>Status</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @jobs.each do |job| %>
+  <tr>
+    <td><%= job.reference %></td>
+    <td><%= link_to job.title, job.public_url %></td>
+    <td><%= job.job_type %></td>
+    <td><%= job.description %></td>
+    <td><%= job.start_date %></td>
+    <td><%= job.end_date %></td>
+    <td><%= job.buyer_team__reference %></td>
+    <td><%= job.visibility %></td>
+    <td><%= job.budget %></td>
+    <td><%= job.duration %></td>
+    <td><%= job.category %></td>
+    <td><%= job.subcategory %></td>
+    <td><%= job.status %> </td>
+    <td><%= link_to 'Show', job.reference %></td>
+    <td><%= (job.status != 'cancelled') ? link_to('Edit', edit_job_path(job.reference))  : '' %></td>
+    <td><%= (job.status != 'cancelled') ? (link_to 'Cancel', job.reference, :confirm=>'Are you sure?', :method=>:delete) : '' %></td>
+  </tr>
+<% end -%>
+</table>
+
+<br />
+
+<%= link_to 'New Job', new_job_path %>
